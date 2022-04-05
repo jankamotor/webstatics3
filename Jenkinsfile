@@ -1,3 +1,5 @@
+pipeline {
+      agent any
 stages{
       stage('deploy to S3'){
           steps{
@@ -8,3 +10,4 @@ stages{
           }
       }
   }
+}
