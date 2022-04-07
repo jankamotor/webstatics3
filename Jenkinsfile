@@ -9,6 +9,7 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner"
             }
         }
+        }
         stage('Deploy_to_AWS_S3') {
             steps {
                 withCredentials([string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID')]) { 
@@ -28,5 +29,4 @@ pipeline {
             }
         }
     }
-}
 }
