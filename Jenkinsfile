@@ -3,12 +3,14 @@ pipeline {
 
     stages {
         stage('Sonarqube_Test') {
+            environment {
+               scannerHome = tool 'SonarQubeScanner-4.7.0' 
+            }
             steps {
-                def scannerHome = tool 'SonarQubeScanner-4.7.0'
                 withSonarQubeEnv('sonarqube-8.9') {
                     sh "${scannerHome}/bin/sonar-scanner"
             }
-        }
+            }
         }
         stage('Deploy_to_AWS_S3') {
             steps {
