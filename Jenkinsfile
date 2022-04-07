@@ -7,8 +7,15 @@ pipeline {
                scannerHome = tool 'SonarQubeScanner-4.7.0' 
             }
             steps {
+                echo 'Analysing.....'
                 withSonarQubeEnv('sonarqube-8.9') {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    sh "${scannerHome}/bin/sonar-scanner \
+                         -Dsonar.host.url=https://sonarcloud.io \
+                         -Dsonar.projectKey=jankamotor_webstatics3 \
+                         -Dsonar.organization=jankamotor \
+                         -Dsonar.login=5cc85b1e27e02a17da9f09daeec2f573331e9d6f 
+                       " 
+
             }
             }
         }
