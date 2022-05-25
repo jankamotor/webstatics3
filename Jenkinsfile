@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent {label 'aws-nodos'}
 
     stages {
         stage('Sonarqube_Test') {
